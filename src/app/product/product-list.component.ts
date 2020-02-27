@@ -11,7 +11,6 @@ import { ProductService } from './product.service';
 export class ProductListComponent 
     implements OnInit{
  
-    private _productService;
     pageTitle: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
@@ -30,19 +29,16 @@ export class ProductListComponent
     products: IProduct[];
     filteredProducts: IProduct[];
 
-    constructor(productService: ProductService) {
-        this._productService = productService;
-        this.products = this._productService.getProducts();
-        this.filteredProducts = this.products;
-        this.listFilter = 'cart';
-    }
+    constructor(private productService: ProductService) { }
 
     toggleImage(): void {
         this.isShowImage = !this.isShowImage;
     }
 
     ngOnInit(): void {
-        console.log('In OnInit');
+        // here is where to put initialization logic
+        this.products = this.productService.getProducts();
+        this.filteredProducts = this.products;
     }
 
     performFilter(filterBy: string): IProduct[] {
