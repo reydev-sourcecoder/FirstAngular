@@ -9,8 +9,8 @@ import
   styleUrls: ['./star.component.css']
 })
 export class StarComponent implements OnChanges {
-  @Input() rating = 0;
-  starWidth = 0;
+  @Input() rating :number;
+  starWidth = 75;
   @Output() ratingClicked: EventEmitter<string> =
     new EventEmitter<string>();
 
