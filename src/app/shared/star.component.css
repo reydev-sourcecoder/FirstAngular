@@ -1,5 +1,5 @@
 .crop {
-    overflow: hidden;
+    overflow: hidden;   /* this will crop the star image */
   }
   div {
     cursor: pointer;

@@ -4,7 +4,7 @@ import
 } from '@angular/core';
 
 @Component({
-  selector: 'pm-star',
+  selector: 'ba-star',
   templateUrl: './star.component.html',
   styleUrls: ['./star.component.css']
 })
