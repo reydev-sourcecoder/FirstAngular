@@ -11,6 +11,7 @@ import { ProductService } from './product.service';
 export class ProductListComponent 
     implements OnInit{
  
+    private _productService;
     pageTitle: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
@@ -29,8 +30,9 @@ export class ProductListComponent
     products: IProduct[];
     filteredProducts: IProduct[];
 
-    constructor(private _productService: ProductService) {
-        this.products = _productService.getProducts();
+    constructor(productService: ProductService) {
+        this._productService = productService;
+        this.products = this._productService.getProducts();
         this.filteredProducts = this.products;
         this.listFilter = 'cart';
     }
