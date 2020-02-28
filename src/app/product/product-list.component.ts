@@ -15,6 +15,7 @@ export class ProductListComponent
     imageWidth: number = 50;
     imageMargin: number = 2;
     isShowImage: boolean = false;
+    errorMessage: string = '';
 
     _listFilter:string;
     get listFilter() : string {
@@ -26,8 +27,8 @@ export class ProductListComponent
             this.performFilter(this.listFilter) : this.products;
     }
 
-    products: IProduct[];
-    filteredProducts: IProduct[];
+    products: IProduct[] = [];
+    filteredProducts: IProduct[] = [];
 
     constructor(private productService: ProductService) { }
 
@@ -36,9 +37,13 @@ export class ProductListComponent
     }
 
     ngOnInit(): void {
-        // here is where to put initialization logic
-        this.products = this.productService.getProducts();
-        this.filteredProducts = this.products;
+        this.productService.getProducts().subscribe({
+            next: products => {
+              this.products = products;
+              this.filteredProducts = this.products;
+            },
+            error: err => this.errorMessage = err
+          });
     }
 
     performFilter(filterBy: string): IProduct[] {
