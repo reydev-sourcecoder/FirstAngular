@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from './product';
 import { ProductService } from './product.service';
 
@@ -13,7 +13,9 @@ export class ProductDetailComponent implements OnInit {
   product: IProduct;
   Id:number;
 
-  constructor(private route: ActivatedRoute, 
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router,
     private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -25,6 +27,10 @@ export class ProductDetailComponent implements OnInit {
             this.product = products.find(p => p.productId == this.Id);
           });
 
+  }
+
+  OnBack(): void {
+    this.router.navigate(['/product']);
   }
 
 }

@@ -1,7 +1,8 @@
 <br />
 <div class='card' *ngIf='product'>
     <div class='card-header'>
-        <b>{{ product.productName }}</b>
+        <label><b>{{ product.productName }}</b></label>
+        <button (click)='OnBack()' style='float: right;'>Back</button>
     </div>
     <table class='table'>
         <tr>
@@ -23,6 +24,10 @@
         <tr>
             <td width=200>Price:</td>
             <td>{{product.price | currency }}</td>
+        </tr>
+        <tr>
+            <td>Rate:</td>
+            <td><ba-star [rating]='product.starRating'></ba-star></td>
         </tr>
     </table>
     
