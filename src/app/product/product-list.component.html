@@ -1,7 +1,7 @@
 <!-- HEADER -->
-<div class='card'>
+<!-- <div class='card'>
     <div class='card-header'>{{pageTitle}}</div>
-</div>
+</div> -->
 <!-- FILTER BY SECTION -->
 <div class='card-body'>
     <div class='row'>
@@ -44,7 +44,9 @@
                         [style.width.px]='imageWidth'
                         [style.margin.px]='imageMargin'/>
                 </td>
-                <td>{{p.productName}}</td>
+                <td><a [routerLink]="['/product', p.productId]">
+                        {{p.productName}}
+                </a></td>
                 <td>{{p.productCode | convertToSpaces: '-'}}</td>
                 <td>{{p.releaseDate}}</td>
                 <td>{{p.price | currency:'USD':'symbol':'1.2-2'}}</td>
