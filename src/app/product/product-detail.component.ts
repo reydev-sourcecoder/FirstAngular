@@ -9,6 +9,7 @@ import { ProductService } from './product.service';
 })
 export class ProductDetailComponent implements OnInit {
 
+  errorMessage:string;
   pageTitle:string = 'Product Detail';
   product: IProduct;
   Id:number;
@@ -19,14 +20,15 @@ export class ProductDetailComponent implements OnInit {
     private productService: ProductService) { }
 
   ngOnInit(): void {
-    let products:IProduct[];
     this.Id = +this.route.snapshot.paramMap.get('id');
-    this.productService.getProducts()
-          .subscribe(data => {
-            products = data;
-            this.product = products.find(p => p.productId == this.Id);
-          });
-
+    this.productService.getProductById(this.Id)
+        .subscribe({
+          next: data => this.product = data,
+          error: err => {
+            this.errorMessage = err;
+            alert(this.errorMessage);
+          }
+        });
   }
 
   OnBack(): void {
