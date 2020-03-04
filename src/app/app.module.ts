@@ -11,6 +11,7 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
 import { ProductDetailComponent } from './product/product-detail.component';
 import { HomeComponent } from './home/home.component';
+import { ProductDetailGuard } from './product/product-detail.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,10 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'product', component: ProductListComponent },
-      { path: 'product/:id', component: ProductDetailComponent},
+      { path: 'product/:id', 
+        component: ProductDetailComponent, 
+        canActivate:[ProductDetailGuard] 
+      },
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'product', pathMatch: 'full'},
       // { path:'**', component: PageNotFoundComponent}
