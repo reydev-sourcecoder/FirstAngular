@@ -1,6 +1,30 @@
 <br />
 <div class='card' *ngIf='product'>
     <div class='card-header'>
-        {{ pageTitle + ': ' + product.productName }}
+        <b>{{ product.productName }}</b>
     </div>
+    <table class='table'>
+        <tr>
+            <td width=200>Name:</td>
+            <td>{{product.productName}}</td>
+        </tr>
+        <tr>
+            <td width=200>Code:</td>
+            <td>{{product.productCode}}</td>
+        </tr>
+        <tr>
+            <td width=200>Description:</td>
+            <td>{{product.description}}</td>
+        </tr>
+        <tr>
+            <td width=200>Availability:</td>
+            <td>{{product.releaseDate}}</td>
+        </tr>
+        <tr>
+            <td width=200>Price:</td>
+            <td>{{product.price | currency }}</td>
+        </tr>
+    </table>
+    
+    <img [src]='product.imageUrl' width=250 height=250 />
 </div>
